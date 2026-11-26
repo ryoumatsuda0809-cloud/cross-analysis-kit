@@ -14,8 +14,10 @@
     2. ②③④が読むファイルの存在（読む先が無ければ止まる）
     3. 案件フォルダ内に隔離フォルダを作っていないか（_使わない/ の外に置いていないか）
     4. 「使わない」を意味する禁止語彙（_旧_ _保留_ _保管_ _前回_ .bak）
+    5. ①の出力（01・01i）の形（tests/card_checks.py。フックが動かない環境でも止める）
 """
 import os, re, sys, glob
+from pathlib import Path
 
 ANKEN_ROOT = "案件"
 ARCHIVE = os.path.join(ANKEN_ROOT, "_使わない")
@@ -92,6 +94,7 @@ def check(anken):
                              f"★その場合 `04` の冒頭に「定規は #14 以前の版を代用。ズレ検出力が落ちている」と明記する")
             else:
                 warns.append(f"{stage}：`{rel}` が無い（その段はまだ回せない）")
+
     return errs, warns, notes
 
 def repo_check():
@@ -116,6 +119,18 @@ def repo_check():
             errs.append(f"別ツール用の写しがある：`{m}`（CLAUDE.md §1-0。外のツールが作った可能性。消して、作った元を探す）")
     return errs
 
+def card_check(anken):
+    """5. ①の出力（01・01i）の形（tests/card_checks.py）。
+    保存時に notice.py（.claude/settings.json のフック）でも出るが、フックは Claude Code をこのフォルダで
+    開いたときしか動かない。2026-11-26 の通しでは別のフォルダで開いていて、R18・R19・S267 が②まで素通りした。
+    段の前に毎回流すこのコマンドに入れて、フックが動かない環境でも止まるようにする。
+    check() は構造だけを見る（tests/test_check_anken.py が前提にしている）ので、ここは別にしている。"""
+    if not any(os.path.exists(os.path.join(anken, f)) for f in ("01_外形カード_事実編.md", "01i_外形カード_内部用.md")):
+        return []
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tests"))
+    import card_checks as C
+    return [f"①の出力の形：{C.describe(v)}" for v in C.check_case(Path(anken))]
+
 def main():
     if sys.argv[1:] == ["--repo"]:
         errs = repo_check()
@@ -133,6 +148,7 @@ def main():
     bad = 0
     for t in targets:
         errs, warns, notes = check(t)
+        errs += card_check(t)
         print(f"=== {t} ===")
         for e in errs:  print(f"  NG   {e}")
         for w in warns: print(f"  WARN {w}")

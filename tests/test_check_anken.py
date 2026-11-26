@@ -140,6 +140,15 @@ def test_cli_single_target_exit_code(tmp_path):
     assert code == 1 and any("_ゴミ" in l for l in ng)
 
 
+def test_cli_also_runs_the_card_checks(tmp_path):
+    """①の出力の形（tests/card_checks.py）は、保存時のフック（notice.py）だけでなく、段の前に流すこのコマンドでも止める。
+    2026-11-26：Claude Code を別のフォルダで開いていてフックが動かず、R18・R19・S267 が②まで素通りした。"""
+    a = make_anken(tmp_path)            # 構造は完全。01i の中身は「合成」1行だけ＝形が足りない
+    assert CA.check(str(a)) == ([], [], [])                # 構造の検査（check）は何も言わない
+    code, ng, _ = run_script("check_anken", "案件/案件Z", cwd=tmp_path)
+    assert code == 1 and any("①の出力の形" in l for l in ng)
+
+
 # ── --repo（フックの配線・写し／#43）──────────────────────
 
 
