@@ -1,7 +1,7 @@
 # クロス分析キット（診断エンジン）
 
 外の事実（A軸）と現場の現実（B軸）を、**別々に取って突き合わせ、食い違いから真因の仮説を出す**ための道具一式です。
-Claude Code のスキル4段（①market-recon → ②genba-ops → ③shinin-hansho → ④tougou-report）と、
+定義（`methods/cross-analysis/`）と、Claude Code のスキル4段（①market-recon → ②genba-ops → ③shinin-hansho → ④tougou-report）と、
 それを正しい順序と隔離で回す `cross-run`、顧客情報を守る `client-data-firewall`、機械の検査とテストが入っています。
 
 ## はじめかた
@@ -17,10 +17,12 @@ python -m pytest -q                   # Python 3.9 以上。すべてオフラ�
 そのフォルダで Claude Code を開く（スキルは `.claude/skills/`、フックは `.claude/settings.json` から読まれる）。
 
 **最初の一回だけ**
-1. `対外資料/_ブランド定義.md` の `{…}` を埋める。埋めるまで PDF は作られない。
+1. `案件/_禁止語_ローカル専用.txt` を作り、外に出してはいけない語（顧客の社名・人名・住所など）を1行に1つ並べる。
+   このファイルが無いと、コミット前の検査がコミットを止める（`案件/` は git に入らない）。
+2. `対外資料/_ブランド定義.md` の `{…}` を埋める。埋めるまで PDF は作られない。
    実在の住所・連絡先を書いたら、そのファイルを公開リポジトリに push しない。
-2. `STATUS.md` を自分の状況に書き換える（`CLAUDE.md` が毎回最初に読ませる）。
-3. 架空の案件 `案件/_TEST_{名前}/` で ①〜④ を1回通す（`cross-run` スキル）。
+3. `STATUS.md` を自分の状況に書き換える（`CLAUDE.md` が毎回最初に読ませる）。
+4. 架空の案件 `案件/_TEST_{名前}/` で ①〜④ を1回通す（`cross-run` スキル）。
 
 ## 案件と守秘
 
@@ -36,10 +38,11 @@ PDF にするなら `cd 対外資料/_report_build && ./build.sh ../デモ_20260
 
 ## 読む順
 
-1. `CLAUDE.md` … 憲法。なぜそうするか（パイプライン・封・守秘）
-2. `STATUS.md` … 今どこにいるか（テンプレート）
-3. `CHECK.md` … 場面別チェックリスト。何を確認するか
-4. `質の検証.md` … 分析の質をどう測るか
+1. `methods/cross-analysis/README.md` … クロス分析とは何か（定義の原本）。根拠の研究台帳は `methods/cross-analysis/research/`
+2. `CLAUDE.md` … 憲法。なぜそうするか（パイプライン・封・守秘）
+3. `STATUS.md` … 今どこにいるか（テンプレート）
+4. `CHECK.md` … 場面別チェックリスト。何を確認するか
+5. `質の検証.md` … 分析の質をどう測るか
 
 ## Windows で使うとき
 
