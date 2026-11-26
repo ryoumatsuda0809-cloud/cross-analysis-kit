@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./.dev.vars)",
+      "Read(./案件/**/03_仮説_封.md)",
+      "Read(./案件/**/02b_*_封.md)",
+      "Read(案件/**/03_仮説_封.md)",
+      "Read(案件/**/02b_*_封.md)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      { "matcher": "Bash|Grep|Read",
+        "hooks": [{ "type": "command", "command": "sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run.sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/seal_guard.py" }] }
+    ],
+    "PostToolUse": [
+      { "matcher": "Write|Edit",
+        "hooks": [{ "type": "command", "command": "sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run.sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/notice.py report" }] }
+    ],
+    "SubagentStop": [
+      { "hooks": [{ "type": "command", "command": "sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run.sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/notice.py anken" }] }
+    ]
+  }
+}

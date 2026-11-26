@@ -1,0 +1,114 @@
+#!/bin/sh
+# ══════════════════════════════════════════════════════════
+# pre-commit ｜ このリポジトリのフックは★このファイル1つだけ
+# ══════════════════════════════════════════════════════════
+# 有効化（clone し直したら1回だけ）：
+#   git config core.hooksPath .githooks
+#   chmod +x .githooks/pre-commit
+# 確認：git rev-parse --git-path hooks → .githooks と出ればよい
+#       commit のたびに最後の行「✓ pre-commit：…通過」が出る。★出なければ動いていない
+#
+# ★なぜ1つにしたか（実走ログ #43）
+#   09-20 に tools/pre-commit を作り .git/hooks/ にリンクしたが、core.hooksPath が
+#   .githooks を指していたので★一度も動いていなかった（git は hooksPath があると
+#   .git/hooks を見ない）。「作った・テストした」は、手でスクリプトを叩いただけだった。
+#   その間に .github/copilot-instructions.md（外のツールが作った写し）が commit に紛れた。
+#   フックが2つある＝写しと同じ二重管理。だから1つにした。
+#
+# 緊急時に飛ばす： git commit --no-verify  ← 飛ばしたら理由を実走ログに書く
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+NG=0
+# python3 が無い端末（Windows など）では python を使う
+PY=$(for p in python3 python py; do "$p" -c "import sys" >/dev/null 2>&1 && { echo "$p"; break; }; done)
+[ -n "$PY" ] || { echo "✋ pre-commit：Python が見つからない"; exit 1; }
+# ★-c core.quotepath=off を毎回付ける（Z9・tests/移行台帳.md）。付けないと日本語パスが "\346\241\210…" と
+#   エスケープされ、下の grep が 案件/ も .pdf も照合できずに素通りする。この Mac は .git/config で off に
+#   していたので動いていたが、その設定は clone しても来ない（新しい端末では効いていなかった）
+STAGED=$(git -c core.quotepath=off diff --cached --name-only --diff-filter=d)
+
+# ── 1｜案件・診断結果が混ざっていないか（.gitignore に頼らない。-f で add されても捕まえる）
+BAD_PATH=$(printf '%s\n' "$STAGED" | grep -E '^(案件|診断結果)/')
+if [ -n "$BAD_PATH" ]; then
+  echo "✋ 顧客の診断結果が commit に入っている（絶対に push しない）"
+  echo "$BAD_PATH" | sed 's/^/    /'
+  echo "   → git reset HEAD <file> で外す"
+  NG=1
+fi
+
+# ── 2｜禁止語（実名・法人番号・実数）。リストは追跡外のローカル専用ファイル
+LIST="案件/_禁止語_ローカル専用.txt"
+if [ -f "$LIST" ]; then
+  HITS=$(git -c core.quotepath=off diff --cached -U0 | grep '^+' | grep -v '^+++' | grep -F -f "$LIST" 2>/dev/null | head -20)
+  if [ -n "$HITS" ]; then
+    echo "✋ 禁止語が含まれている"
+    echo "$HITS" | sed 's/^/    /'
+    echo "   → 実名・法人番号・実数は 案件/_社名対応表_ローカル専用.md にだけ置く"
+    NG=1
+  fi
+else
+  echo "⚠️  $LIST が無い。禁止語チェックを飛ばした"
+fi
+
+# ── 3｜社名漏れ検査（lint_01 --leak）
+LINT=.claude/skills/market-recon/scripts/lint_01.py
+if [ -f "$LINT" ] && ! "$PY" "$LINT" --leak > /tmp/_lk.log 2>&1; then
+  echo "✋ 社名漏れ検査が NG"
+  grep "NG " /tmp/_lk.log | sed 's/^/    /'
+  NG=1
+fi
+
+# ── 4｜案件フォルダの構造（check_anken.py）
+if [ -f check_anken.py ] && ! "$PY" check_anken.py > /tmp/_ca.log 2>&1; then
+  echo "✋ check_anken.py が NG（案件フォルダの構造）"
+  grep "NG " /tmp/_ca.log | sed 's/^/    /'
+  NG=1
+fi
+
+# ── 5｜別ツール用の写しが作られていないか（実走ログ #34〜#36・#43）
+#      写しは必ずずれ、置換が嘘を作る。★commit に入るかではなく「在るか」で止める
+for mirror in .agents AGENTS.md .Codex .codex .github/copilot-instructions.md; do
+  [ -e "$mirror" ] || continue
+  echo "✋ 別ツール用の写しがある：$mirror"
+  echo "   → CLAUDE.md §1-0。原本は CLAUDE.md と .claude/skills/ だけ。消してから commit"
+  NG=1
+done
+
+# ── 6｜PDF は★許可リスト（対外資料/デモ_*/ 以外は全部止める。知らない場所は止める側に倒す）
+BADPDF=$(printf '%s\n' "$STAGED" | grep -i '\.pdf$' | grep -vE '^対外資料/デモ_[^/]+/')
+if [ -n "$BADPDF" ]; then
+  echo "✋ 許可していない場所の PDF"
+  echo "$BADPDF" | sed 's/^/    /'
+  echo "   → 顧客のレポートは 案件/{社名}/ に出す（gitignore 済み）"
+  NG=1
+fi
+
+# ── 7｜封の deny が外れていないか（check_seal.py。段1まで手で叩くだけだった → tests/移行台帳.md 段6）
+if [ -f check_seal.py ] && ! "$PY" check_seal.py > /tmp/_cs.log 2>&1; then
+  echo "✋ check_seal.py が NG（settings.json の deny から封が外れている）"
+  sed 's/^/    /' /tmp/_cs.log | head -10
+  NG=1
+fi
+
+# ── 8｜テスト一式（tests/。封・配管・検査スクリプトの挙動。★案件の本文は出さない）
+#      ★git がフックに渡す GIT_* 変数を外してから回す。残すと、一時リポジトリを作るテストが
+#        このリポジトリの index を触る
+if [ -d tests ]; then
+  if "$PY" -c "import pytest" 2>/dev/null; then
+    if ! (for v in $(env | sed -n 's/^\(GIT_[A-Z_]*\)=.*/\1/p'); do unset "$v"; done
+          "$PY" -m pytest tests/ -q -x -p no:cacheprovider > /tmp/_pt.log 2>&1); then
+      echo "✋ tests/ が落ちた（"$PY" -m pytest tests/ -q で詳細）"
+      grep -E "^(FAILED|ERROR)" /tmp/_pt.log | head -10 | sed 's/^/    /'
+      NG=1
+    fi
+  else
+    echo "⚠️  pytest が無い。tests/ を飛ばした（pip install pytest）"
+  fi
+fi
+
+if [ "$NG" = "1" ]; then
+  echo ""; echo "commit を中止した。直すか、理由があるなら --no-verify（理由を実走ログへ）"
+  exit 1
+fi
+echo "✓ pre-commit：8項目すべて通過（.githooks/pre-commit）"
+exit 0

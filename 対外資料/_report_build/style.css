@@ -1,0 +1,59 @@
+/* ===== レポート ===== 色は :root の3つだけで決まる ===== */
+:root{
+  --accent: #2f5d50;        /* 主色：見出しの罫線・番号・表の見出し */
+  --accent-soft: #e5eeea;     /* 主色の淡色：表の見出し背景・根拠の表 */
+  --ink:#1f2328;           /* 本文 */
+  --muted:#5b6470;         /* 補足・出典 */
+  --line:#d3d7dc;          /* 罫線 */
+  --paper-soft:#f5f6f7;    /* 引用ブロック背景 */
+}
+@page { size:A4; margin:18mm 17mm 20mm 17mm;
+  @bottom-center{ content: counter(page) " / " counter(pages); font-size:8pt; color:#8a929b;
+    font-family:"Noto Sans CJK JP",sans-serif; }
+  /* 文書名は build.sh が h1 から差し込む（観察ゼロの型では文書名が変わるため／実走ログ #47） */
+  @top-right{ content:""; font-size:7.5pt; color:#9aa1a9;
+    font-family:"Noto Sans CJK JP",sans-serif; }
+}
+@page :first{ @top-right{ content:none; } }
+html{ font-size:10.5pt; }
+body{ font-family:"Noto Sans CJK JP","Noto Sans JP",sans-serif; color:var(--ink);
+  line-height:1.8; margin:0; font-feature-settings:"palt" 1; }
+
+/* 表題 */
+h1{ font-size:1.6rem; font-weight:700; line-height:1.45; margin:0 0 .8em; letter-spacing:.02em;
+  padding-bottom:.45em; border-bottom:3px solid var(--accent); page-break-after:avoid; }
+h1 + hr{ display:none; }
+
+/* 節（##） */
+h2{ font-size:1.18rem; font-weight:700; margin:2em 0 .7em; color:var(--ink);
+  padding:.1em 0 .1em .65em; border-left:5px solid var(--accent); page-break-after:avoid; }
+/* 課題（###） — 引用ブロックと見分けがつくよう、塗りではなく下線 */
+h3{ font-size:1.02rem; font-weight:700; margin:1.5em 0 .5em; color:var(--accent);
+  padding-bottom:.25em; border-bottom:1px solid var(--line); page-break-after:avoid; }
+
+p{ margin:.55em 0; text-align:justify; }
+strong{ font-weight:700; }
+ul,ol{ margin:.45em 0 .9em; padding-left:1.4em; }
+ol{ padding-left:2.2em; }  /* 2桁の番号（10.〜）の十の位が欠けていた（実走ログ #47） */
+li{ margin:.28em 0; }
+li::marker{ color:var(--accent); }
+
+/* 区切り線：節見出しの直前では出さない（線が2本並ぶのを防ぐ） */
+hr{ border:0; border-top:1px solid var(--line); margin:1.6em 0; }
+hr:has(+ h2){ display:none; }
+
+blockquote{ margin:1em 0; padding:.8em 1.05em; background:var(--paper-soft);
+  border-left:3px solid var(--accent); font-size:.94rem; page-break-inside:avoid; }
+blockquote p{ margin:.3em 0; }
+
+table{ border-collapse:collapse; width:100%; margin:1em 0; font-size:.88rem; page-break-inside:avoid; }
+/* 表の直前の見出し・導入文を表と一緒に送る（見出しだけページ下に残り大きな余白ができていた／実走ログ #47） */
+p:has(+ table), h2:has(+ table), h3:has(+ table), h2:has(+ p + table), h3:has(+ p + table){ break-after:avoid; page-break-after:avoid; }
+th,td{ border:1px solid var(--line); padding:.5em .6em; text-align:left; vertical-align:top; }
+th{ background:var(--accent-soft); font-weight:700; color:var(--ink); }
+tr:nth-child(even) td{ background:#fafbfb; }
+code{ font-family:inherit; background:#eef0f2; padding:0 .25em; }
+
+/* 先頭の見本ブロック（デモのみ） */
+body > blockquote:first-of-type{ background:#fff; border:1.5px solid var(--accent);
+  padding:1em 1.25em; font-size:.94rem; }

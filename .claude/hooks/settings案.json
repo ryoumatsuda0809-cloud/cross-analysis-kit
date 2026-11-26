@@ -1,0 +1,22 @@
+{
+  "_説明": "段6のフック登録案（tests/移行台帳.md §6）。settings.json の編集は本人だけ（check_seal.py docstring・実走ログ 19-1）。下の hooks を .claude/settings.json の permissions と同じ階層に貼る。_説明 は貼らない",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Grep|Read",
+        "hooks": [{ "type": "command", "command": "sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run.sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/seal_guard.py" }]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [{ "type": "command", "command": "sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run.sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/notice.py report" }]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [{ "type": "command", "command": "sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/run.sh \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/notice.py anken" }]
+      }
+    ]
+  }
+}
