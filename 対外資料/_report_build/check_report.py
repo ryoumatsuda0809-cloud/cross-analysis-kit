@@ -172,8 +172,9 @@ def main():
         (warns if draft else errs).append(f"未記入の欄：{m.group(0)[:46]}")
 
     n = len(body)
-    if n > 16000:
-        warns.append(f"本文 {n:,} 字。長さで削るなら**重複と体裁だけ**（課題・問い・限界・採っていない説明の中身は削らない／C-7）")
+    if n > 5000:   # 2026-11-27 本人決定（tougou-report 出力仕様(2)）。16,000 から下げた
+        warns.append(f"本文 {n:,} 字（上限 5,000）。削らずに移す：8つ目以降の問いと、本文に出ない数字の 9-2 を 07 へ"
+                     "（課題・限界・採っていない説明の中身は削らない／C-7）")
 
     mode = "提出前版(--draft)" if draft else "提出版"
     print(f"=== check_report ｜ {disp or path}　[{mode}] ===")

@@ -805,7 +805,7 @@ def test_b25_heading_only_inside_memo_is_missing():
 
 
 
-# ── B26〜B28：05 の形（shinin-hansho #436・#379・#417） ─────────
+# ── B26〜B28：05 の形（shinin-hansho #444・#379・#417） ─────────
 
 
 def test_b26_ng_when_adopted_without_04(anken):
@@ -955,7 +955,7 @@ def test_b29_ng(row):
     assert _one("B29", A.b29_05_cross_keeps_numbers(_cross(row)))
 
 
-# ── B30〜B33：入力が無いときの扱い（genba-ops #174・#177／tougou-report #448b・#459） ──
+# ── B30〜B33：入力が無いときの扱い（genba-ops #174・#177／tougou-report #456b・#459） ──
 
 FULL = dict(s01="x", s01i="x", s02="x", s04=GOOD_04, s05=GOOD_05, s06=GOOD_06, s07=GOOD_07, memo=MEMO_REMOTE)
 
@@ -1218,6 +1218,13 @@ def test_b40_ng_when_customer_question_dropped():
 
 def test_b40_counts_list_items_not_comments():
     s06 = GOOD_06.replace("- 段取り替えは1回何分かかっていますか", "<!-- - 段取り替えは1回何分かかっていますか -->")
+    assert _one("B40", A.b40_06_all_customer_questions(GOOD_05, s06))
+
+
+def test_b40_ng_when_06_has_more_than_seven_questions():
+    """2026-11-27 本人決定：06 の問いは7つまで。8つ目以降は 07§4 へ移す（架空案件で問い14・7,527字になった）。"""
+    extra = "".join(f"\n- 追加の確認{i}はどうなっていますか" for i in range(8))
+    s06 = GOOD_06.replace("- 段取り替えは1回何分かかっていますか", "- 段取り替えは1回何分かかっていますか" + extra)
     assert _one("B40", A.b40_06_all_customer_questions(GOOD_05, s06))
 
 

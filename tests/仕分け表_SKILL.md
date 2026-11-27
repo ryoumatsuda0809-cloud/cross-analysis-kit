@@ -433,164 +433,175 @@
 | 406a | shinin-hansho | G |  |  | 棄却：一般論のみ／代表性なし／対 | list |
 | 406b | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b12_ng_when_rejection_has_no_reason` | 理由を残す（消さない） | list／B12。理由の中身は人 |
 | 407 | shinin-hansho | G |  |  | 判定不能：材料が足りず、判定その | list |
-| 408 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b4_ng` | テンプレの §0「開封記録」を必 | text／形だけ |
-| 409a | shinin-hansho | M | 一部 | `test_anken_outputs.py::test_b4_ng` `test_anken_outputs.py::test_b34_ng_when_03_before_04` | §0 開封記録：04 を読んだ後 | list／【09-28 再点検】§0 の「04 を読んだ日時」と「03 を開封した日時」の前後を比べていない（B4 は空欄とテンプレの文言だけ）／【09-28 B34】§0 の2つの日時の前後を比べる（日付、両方に時刻があれば時刻まで。同じ日で時刻が片方だけは比べられないので通す）／【09-29 済 → 一部（本人決定 c）】同じ日で時刻が片方しか無いと「04 の後に 03」を確かめられないのに通す。記録の欠け＝05 の書き方の問題なので検査では埋めない。直しは移行後：05 §0 のテンプレで両方の時刻を必須に（③が読むファイル＝修正。台帳 §8）／【10-01 実走 #76】テンプレ §0 の2行に「時刻まで書く」と書いた（75-9 と一緒に）。TEST の③2回とも両方に時刻あり（#75 は3回中1回）。検査は本人決定 c のまま片方だけでも通すので「一部」のまま |
-| 409b | shinin-hansho | R |  |  | 04 が無い場合はその旨と、暫定判定であること | list／参照：原本 #370 |
-| 410 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` | §1 クロス表：03の仮説 ｜ | list／B16：節と §1 の列（03・04・結論・機序・解釈） |
-| 411 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b17_ng_when_counts_differ` `test_anken_outputs.py::test_b17_ng_when_summary_blank` `test_anken_outputs.py::test_b17_premise_table_is_not_counted_twice` `test_anken_outputs.py::test_b17_ng_when_a_judgement_row_is_missing` | §2 反証サマリー（採用 n／要 | list／B17：4つの判定が全部並び、§3 の最初の判定表と件数が合う |
-| 412 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` `test_anken_outputs.py::test_b16_premise_heading_by_stage_name` | §3 仮説ごとの判定表（＋前提が | list／B16：§3 と「前提が崩れた仮説」の専用表（### の名前は「前提が崩れた」か「Stage 2-0」） |
-| 413 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b5_ng_when_questions_are_a_list` | §4 現場で確認すべき決定的な問 | list／表の形だけ。優先度の順は人 |
-| 414 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b5_ng` `test_anken_outputs.py::test_b5_ng_when_no_destination_column` | → 各問いに「顧客可／社内のみ」 | text／B5 |
-| 415 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` | §5 AIに頼りすぎ注意：データ | list／B16：節があり空でない（「データでなくモデル依存」かどうかの中身は H） |
-| 416 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b6_ng_when_empty` `test_anken_outputs.py::test_b6_ng_when_section_missing` | §6 ③が新しく作った仮説の申告 | list／B6 |
-| 417 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` | §7 02b（主任診断士の見立て | list／B16：節があり空でない |
-| 418 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b11_ng_when_human_section_missing` | §8 人間の判断が必要な論点（下 | list／B11 |
-| 419 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b13_ng_when_empty` `test_anken_outputs.py::test_b13_ng_when_section_missing` `test_anken_outputs.py::test_b36_ng_when_sec9_says_none` | §9 比べていないもの（04§2 | list／B13／【09-28 再点検】#373b と同じ（04 §2 の比較不能 → §9 の引き継ぎ）／【09-28 B36】#373b と同じ |
-| 420 | shinin-hansho | N |  |  | ③の格付けで「値の食い違い」か「 | text |
-| 421 | shinin-hansho | N |  |  | ③は通過点ではない。受け取って、 | text |
-| 422 | shinin-hansho | R |  |  | \| 比較不能（§9） \| 材料は | text／参照：原本 #379a |
-| 423 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b28_ng_rejected_to_customer` `test_anken_outputs.py::test_b28_ng_when_id_in_hypothesis_column` `test_anken_outputs.py::test_b28_ng_when_rejected_branch_cited` `test_anken_outputs.py::test_b28_split_parent_is_judgement` `test_anken_outputs.py::test_b28_mixed_sources_is_judgement` | 棄却した仮説から出た「決定的な問 | text／B28：§4 の出所の番号が全部 §3 で棄却の行にしか出ないのに顧客可、を止める。分割（H4a 要検証・H4b 棄却で出所が H4）と番号の混在は「なぜ聞くのか」の判断（H）＝機械では決まらない |
-| 424 | shinin-hansho | G |  |  | 顧客可 ／ 顧客に見せてよい。採 | table |
-| 425 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b7_ng_when_internal_question_copied_to_06` `test_anken_outputs.py::test_b22_ng_when_internal_question_not_transferred` | 社内のみ ／ 棄却した仮説から出 | table／06 に載っていないか（B7）＋ 07 §4 の転記数（B22） |
-| 426 | shinin-hansho | R |  |  | 答えが棄却済みの仮説になるなら、 | text／参照：原本 #423 |
-| 427 | shinin-hansho | G |  |  | 「訪問を前提にしない」＝訪問でき | text／F-1 と関わる |
-| 428 | shinin-hansho | N |  |  | 03 にも 04 にも書かれてい | text |
-| 429 | shinin-hansho | R |  |  | だが黙って混ぜてはいけない。 ④ | text／参照：原本 #430 |
-| 430 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b6_ng_when_empty` | 「これは①にも②にも無く、③が突 | list／節があり空でないかだけ（B6） |
-| 431 | shinin-hansho | G |  |  | 対抗仮説を必ず併記する | list |
-| 432 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b18_ng_when_self_approved` `test_anken_outputs.py::test_b18_ok_when_to_be_verified` | 格付けは原則 要検証。③が作った | list／B18：③が作った仮説を「採用」にしていない（「原則」なので要検証以外の判定は止めない） |
-| 433 | shinin-hansho | G |  |  | 「AIが決める領域ではない」と判 | text |
-| 434 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b9_ng_when_07_has_fewer_items` | 「これらは 07_主任診断士への | text／転記された結果（07 の件数）で見る（B9） |
-| 435 | shinin-hansho | G |  |  | 建設的に叩く。 目的は確度を上げ | list |
-| 436 | shinin-hansho | R |  |  | 一般論・業界パックを"証拠"にし | list／参照：原本 #395 |
-| 437a | shinin-hansho | R |  |  | 対抗仮説と反証条件を必ず付ける。 | list／参照：原本 #400 |
-| 437b | shinin-hansho | R |  |  | 反証条件 | list／参照：原本 #401 |
-| 438 | shinin-hansho | R |  |  | 判断しない。 採用/要検証/棄却 | list／参照：原本 #346 |
-| 439 | shinin-hansho | R |  |  | 04 を先に、03 を後に読む。 | list／参照：原本 #359 |
-| 440 | shinin-hansho | R |  |  | 自分が作った解釈は、自分で承認し | list／参照：原本 #432 |
-| 441 | shinin-hansho | R |  |  | 食い違いを消さない。 どちらが正 | list／参照：原本 #381 |
-| 442 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b26_ng_when_adopted_without_04` `test_anken_outputs.py::test_b26_not_applied_when_04_exists` `test_anken_outputs.py::test_b26_ok_without_adoption` | 04 が無いときは 採用 を出さ | list／B26：04 が無い案件の 05 §3 で採用 0（§2 との一致は B17）。実案件に 04 の無い 05 は無い＝合成でだけ確認 |
-| 443 | shinin-hansho | R |  |  | 守秘。 第二の意見で外部モデルを | list／参照：原本 #403 |
-| 444 | tougou-report | R |  |  | 経営者がハッとする言葉に翻訳し、 | text／参照：原本 #459 |
-| 445 | tougou-report | H |  |  | 「レポートにまとめて」「提出用に | text／使いどき |
-| 446 | tougou-report | R |  |  | これは貼り合わせではなく編集。棄 | text／参照：原本 #459 |
-| 447 | tougou-report | G |  |  | 編集であって貼り合わせではない。 | text |
-| 448 | tougou-report | G |  |  | 確度で取捨し、経営者の言葉に翻訳 | text／トーン |
-| 449 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_structural_leaks` | 採番（H1 X5 H3a・判定表 | list／採番の形（B-6） |
-| 450 | tougou-report | M | 済 | `test_check_report.py::test_draft_tolerates_comments_with_internal_words` `test_check_report.py::test_ng_on_structural_leaks` | 「どの判定をどこに束ねたか」の対 | list／本文に出れば採番・内部語で捕まる |
-| 451 | tougou-report | M | 済 | `test_build_sh.py::test_internal_memo_is_stripped_before_check` | 内部メモは build.sh が | list／build.sh を偽の pandoc の手前まで走らせて見る |
-| 452 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_internal_word` `test_check_report.py::test_ng_on_structural_leaks` | check_report.py | list |
-| 453 | tougou-report | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` `test_engine_consistency.py::test_a1_readers_match_cross_run_table` | 案件/{会社名}/01i_外形カ | list／有無だけ |
-| 454a | tougou-report | M | 済 | `test_check_anken.py::test_01i_falls_back_to_01_with_note` | 01i が無い案件（#14以前） | list／代用の NOTE |
-| 454b | tougou-report | M | 済 | `test_anken_outputs.py::test_b32_ng_when_substitute_not_recorded` `test_anken_outputs.py::test_b32_ok_when_recorded` `test_anken_outputs.py::test_b32_not_applied_when_01i_exists` | 07（社内申し送り）に残リスク | list／B32：01 はあり 01i が無い案件の 07 に「01i」と「代用／無い／なし」が同じ行にある。_TEST_案件C は規則（09-20）より前の 07（08-19）＝KNOWN |
-| 455 | tougou-report | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` `test_engine_consistency.py::test_a1_readers_match_cross_run_table` | 案件/{会社名}/05_反証レポ | list／有無だけ。尊重したかは人 |
-| 456 | tougou-report | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` `test_engine_consistency.py::test_a1_readers_match_cross_run_table` | 案件/{会社名}/04_現場分析 | list／有無だけ |
-| 457 | tougou-report | H |  |  | 案件/{会社名}/02_現場で確 | list／★④の入力に 02 とあるが、READERS と cross-run #101 の ④ に 02 が無い → 台帳 §8 |
-| 458 | tougou-report | R |  |  | 03_仮説_封.md を直接読ま | text／参照：原本 #106 |
-| 459 | tougou-report | G |  |  | 反証の格付けを尊重する：棄却は載 | list／棄却の語の検査は cross-run #121 |
-| 460 | tougou-report | G |  |  | 事実と仮説を分ける：出典・現場の | list |
-| 461 | tougou-report | G |  |  | 経営者の言葉に翻訳：専門用語を避 | list |
-| 462 | tougou-report | M | 済 | `test_anken_outputs.py::test_b20_ng_when_four_issues` `test_anken_outputs.py::test_b20_ok_with_three` | 主要課題は3つの"見出し"に絞る | list／B20：課題の節の ### が3つ以下 |
-| 463 | tougou-report | G |  |  | ただし「採用」を3件に間引かない | text |
-| 464 | tougou-report | G |  |  | 束ねる軸は「機序」（なぜそうなっ | text |
-| 465 | tougou-report | M | 済 | `test_anken_outputs.py::test_b33_ng_when_bundling_not_left_to_human` `test_anken_outputs.py::test_b33_ok_when_left_to_human` `test_anken_outputs.py::test_b33_not_applied_up_to_three` `test_anken_outputs.py::test_b33_line_outside_sec6_is_not_enough` | 本人が決める前：④は束ねて出して | list／B33：05 §3 の採用が3件を超えた案件の 07 §6 に「束ね」と「本人」が同じ行にある（本人が決めた後の記録も同じ形）。「決める前か後か」は機械では分からないので区別しない。_TEST_案件C は規則（09-25）より前＝KNOWN |
-| 466 | tougou-report | G |  |  | 本人が決めた後に④をやり直すとき | list／07 の記録と見出しの一致は意味を読む |
-| 467 | tougou-report | N |  |  | 問いにも棄却が混ざる： | list／前置き |
-| 468 | tougou-report | M | 済 | `test_anken_outputs.py::test_b7_ng_when_internal_question_copied_to_06` | 05§4「現場で確認すべき決定的 | text／B7。文言が一致したときだけ（CHECK #85） |
-| 469 | tougou-report | G |  |  | 「社内のみ」の存在は書く。件数と | list |
-| 470 | tougou-report | N |  |  | 何も書かない ／ 06 が全件掲 | table |
-| 471 | tougou-report | N |  |  | 件数を書く（「6件伏せた」） ／ | table |
-| 472 | tougou-report | H |  |  | 前提：その1文が事実であること。 | text／07§4 で確かめたかは痕跡が残らない |
-| 473 | tougou-report | M | 済 | `test_anken_outputs.py::test_b21_ng_when_two_issues_without_table` `test_anken_outputs.py::test_b21_ok_with_table_and_single_issue_needs_none` `test_anken_outputs.py::test_b21_ng_when_table_after_first_heading` | 課題を同じ重さに見せない（→ C | list／B21：課題が2つ以上なら表があり、最初の課題の見出しより前にある |
-| 474 | tougou-report | M | 済 | `test_anken_outputs.py::test_b21_ng_when_two_issues_without_table` | 列は ①御社の発信とお話が異なっ | text／B21：3列の見出し（異なっていた／数字／決めていない） |
-| 475 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_internal_word` `test_anken_outputs.py::test_b41_ng` | 格付け（強・中・弱）は書かない。 | text／「格付け」の語だけ。強・中・弱を書いたかは見ていない／【09-28 B41】06 に「強度」「格付け」の語・強／中／弱だけのセルが無いか。「強い根拠」のような地の文の格付けは人 |
-| 476 | tougou-report | G |  |  | 「根拠だけ棄却」型は、載せないだ | list |
-| 477 | tougou-report | G |  |  | ③が「自分で新しく作った」と申告 | list |
-| 478 | tougou-report | G |  |  | 理由：見出しにすると、誰も決めて | text |
-| 479 | tougou-report | M | 済 | `test_anken_outputs.py::test_b14_ng_when_limits_empty` `test_anken_outputs.py::test_b14_ng_when_limits_only_in_comment` `test_anken_outputs.py::test_b37_ng_on_ijou_nashi` `test_anken_outputs.py::test_b37_ng_on_polite_forms` | 比較不能を「異常なし」と書かない | list／B14（CHECK #83）。書き方は人／【09-28 再点検】06 に「異常なし」の語があるかは見ていない（B14 は限界の節の空欄だけ）／【09-28 B37】06 本文（内部メモを除く）に「異常なし」が無いか／【09-29】敬体の形（異常はありません・見られません・ございません・異常がない）も見る。「異常がないか」（問い）は通す。言い換え（問題ありません等）は人 |
-| 480 | tougou-report | H |  |  | 出所は 05§9「比べていないも | text／04§2 を見ないかは痕跡が残らない |
-| 481 | tougou-report | G |  |  | 9-1（材料が足りない）：「両側 | list |
-| 482 | tougou-report | G |  |  | 9-2（層が違う）：「この2つは | list |
-| 483 | tougou-report | G |  |  | 資格の独占業務に踏み込まない：法 | list |
-| 484 | tougou-report | G |  |  | 「〜すべき」と断定しない。「〜を | text／法務・税務などの文脈か読まないと分からない |
-| 485 | tougou-report | N |  |  | 社労士法27条・行政書士法1条の | text |
-| 486 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | → 06 に「本レポートで踏み込 | text／必須節（CHECK #86） |
-| 487 | tougou-report | G |  |  | 法令・補助金・許認可の適正性に触 | list |
-| 488 | tougou-report | G |  |  | 第三者認証（ISO等）の「有効性 | list |
-| 489 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` `test_anken_outputs.py::test_b19_ng_when_sources_empty` | 出典を残す：AIの作文でないこと | list／B19：節があり空でない（内部メモだけは空とみなす） |
-| 490 | tougou-report | R |  |  | 守秘：現場メモの生の文言はそのま | list／参照：原本 #198 |
-| 491 | tougou-report | N |  |  | 06_課題仮説レポート.md ／ | table／案内 |
-| 492 | tougou-report | M | 済 | `test_anken_outputs.py::test_b9_ng_when_07_missing` | 07_主任診断士への申し送り.m | table／B9。06 があれば 07 もある（CHECK #87） |
-| 493 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` `test_anken_outputs.py::test_b19_ng_when_summary_over_three_lines` `test_anken_outputs.py::test_b19_three_lines_ok` | エグゼクティブサマリー（3行で" | list／B19：節があり、本文が1〜3行（「本質的な病巣を突く」かは H） |
-| 494 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` | 御社の現状（外から見えること）（ | list／B19 |
-| 495 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` `test_anken_outputs.py::test_b23_ok_with_four_items` `test_anken_outputs.py::test_b23_ng_when_item_missing` `test_anken_outputs.py::test_b20_ng_when_four_issues` | 見えてきた本質的な課題（確度順に | list／B19・B20・B23：課題の節があり、見出しが3つ以下、各課題に4項目（何が起きているか／なぜか／根拠／放置すると）。「確度順」は 05 の判定との意味の対応が要るので H |
-| 496 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | 一緒に確かめたい問い（05§4 | list／必須節 |
-| 497 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | この診断の限界：伺えた範囲（ | list／必須節 |
-| 498 | tougou-report | R |  |  | 限界を先に言う相手の方が、言わな | text／参照：原本 #497 |
-| 499 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | 本レポートで踏み込んでいない領域 | list／必須節 |
-| 500 | tougou-report | G |  |  | 相手が規制業種なら業界規制名を一 | text／規制業種かは人の判断 |
-| 501 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | 次の一歩（すり合わせへの案内。押 | list／必須節 |
-| 502 | tougou-report | R |  |  | 出典 | list／参照：原本 #489 |
-| 503 | tougou-report | M | 済 | `test_check_report.py::test_submission_ng_when_comment_left` | 内部メモ（どの格付けをどう反映し | list／提出版にコメントが残れば NG |
-| 504 | tougou-report | G |  |  | 中身は1件も落とさない。書き方だ | text |
-| 505 | tougou-report | G |  |  | 観察あり（どこで に 現地 があ | table／観察ありは通常の型。B8 は観察ゼロだけ見る |
-| 506 | tougou-report | M | 済 | `test_anken_outputs.py::test_b8_ng_on_observation_zero` `test_anken_outputs.py::test_b8_applies_to_template_format_memo` `test_anken_outputs.py::test_b8_ng_on_missing_stock_phrases` | 観察ゼロ（遠隔・伝聞・書面のみ） | table／文書名・見出し・「課題である」だけ（CHECK #77）／【09-28 B8 拡張】課題の節の冒頭2行に「断定ではなく」・「拝見していない／見て確かめたもの」・訪問に触れるなら「機会をいただける」。問いの並べ順（書面で確かめられるものを先に）は人 |
-| 507 | tougou-report | M | 済 | `test_anken_outputs.py::test_b8_ng_on_observation_zero` `test_anken_outputs.py::test_b8_negated_kadai_is_allowed` | 観察ゼロなら「これが課題である」 | list／「課題である」の語だけ |
-| 508 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` | 全項目が単一ソースでも 06 は | list／B19：課題の節に本文がある。「単一ソースであることを本文に書く」は言い回しが自由で形にならない（H） |
-| 509 | tougou-report | N |  |  | なぜ (b)「観察が入るまで出さ | list |
-| 510 | tougou-report | H |  |  | 型を変えたら、紐づく記述を全部見 | list |
-| 511 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` `test_anken_outputs.py::test_b25_ng_when_template_section_missing` `test_anken_outputs.py::test_b25_template_heads_are_read_from_template` | 理由：古い 06 を土台にすると | text／B25：テンプレの「## 」見出しを毎回読み、06 が全部持つか（課題の節は観察の有無で2通り）。_TEST_案件C で実際に1節の欠落を捕まえた |
-| 512 | tougou-report | R |  |  | 本レポートで踏み込んでいない領域 | table／参照：原本 #486 |
-| 513 | tougou-report | R |  |  | この診断の限界 ／ 「AIに頼り | table／参照：原本 #497 |
-| 514 | tougou-report | G |  |  | ページ数の上限は置かない（→ C | list |
-| 515 | tougou-report | G |  |  | 長さを理由に削ってよいのは「重複 | list |
-| 516 | tougou-report | N |  |  | 理由：長さで削ると真っ先に落ちる | list |
-| 517 | tougou-report | N |  |  | 重複の例：「この診断の限界」と課 | list／例 |
-| 518 | tougou-report | R |  |  | 課題の見出しは最大3つ（束ねる。 | list／参照：原本 #462 |
-| 519 | tougou-report | M | 済 | `test_anken_outputs.py::test_b40_ng_when_customer_question_dropped` | 「一緒に確かめたい問い」は全件を | list／候補：05 §4 の顧客可の問いが 06 にある（④が言い換えるので文言一致では下限）／【09-28 B40】05 §4 の顧客可の件数 ≤ 06「一緒に確かめたい問い」の件数（④は言い換えるので文言は照合しない＝件数の下限） |
-| 520 | tougou-report | G |  |  | 営業に効くからという理由で、診断 | text |
-| 521 | tougou-report | N |  |  | 理由：06 は診断の成果物であっ | text |
-| 522 | tougou-report | R |  |  | 重複（同じ説明が2か所にある）・ | table／参照：原本 #515 |
-| 523 | tougou-report | R |  |  |  ／ 印象が悪い／煽りに読まれる | table／参照：原本 #520 |
-| 524 | tougou-report | R |  |  |  ／ 相手が読みたがらなさそう | table／参照：原本 #520 |
-| 525 | tougou-report | G |  |  | 削ったら、紙に「削った」と書く。 | text |
-| 526 | tougou-report | G |  |  | 見本（デモ）は抜粋してよい。ただ | text |
-| 527 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_sincerity_word` | 1 ／ 誠実さを宣言する ／ 「 | table／語の一覧だけ |
-| 528 | tougou-report | G |  |  | 2 ／ 3つの課題を同じ形で書く | table |
-| 529 | tougou-report | G |  |  | 3 ／ 人がいない紙にする ／ | table |
-| 530 | tougou-report | R |  |  | 4 ／ 太字を撒く ／ 全部が強 | table／参照：原本 #534 |
-| 531a | tougou-report | M | 済 | `test_anken_outputs.py::test_b25_ng_when_template_section_missing` `test_anken_outputs.py::test_b25_ng_when_hajimeni_not_first` | → 冒頭に「はじめに」を置き、主 | text／B25：テンプレの「はじめに」の節があり、最初の ## 節。空欄のまま出すかは CHECK #96（波括弧） |
-| 531b | tougou-report | H |  |  | 主任診断士本人が一人称で書く | text／誰が書いたかは残らない（09-28：テンプレに欄を足した → 台帳 §8） |
-| 532 | tougou-report | H |  |  | 空欄に戻したり、言い回しを整えた | text／前の 06 と比べれば機械でも見られるが、前の版を残さない運用 |
-| 533 | tougou-report | N |  |  | 太字の決まり（check_rep | text／前置き |
-| 534 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_two_inline_bolds_in_one_section` `test_check_report.py::test_one_inline_bold_per_section_ok` | 文中の太字は 1節に1か所まで。 | list |
-| 535 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_long_bold` `test_check_report.py::test_bold_sentence_on_own_line_is_counted` | 太字は 20字まで。文ごと太くし | list |
-| 536 | tougou-report | M | 済 | `test_check_report.py::test_label_only_bold_lines_not_counted` `test_check_report.py::test_label_followed_by_colon_inline_not_counted` | 項目名（「何が起きているか：」の | list |
-| 537 | tougou-report | G |  |  | 迷ったら太字にしない。強調が1つ | list |
-| 538 | tougou-report | N |  |  | ※このスキルやテンプレの指示文は | list |
-| 539 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_assertive_word` `test_anken_outputs.py::test_b42_ng` | 敬体。相手は「御社」。断定しない | list／断定語の一覧だけ。敬体・「可能性」の連続は見ていない／【09-28 B42】常体の文末（である。だ。など）が無い・「可能性」が3文続かない・表の外で「貴社」と呼ばない（表・見出し・引用・内部メモは見ない）。「1ページ」は連続3文で近似。言い切れる事実を言い切ったかは人／【09-29】常体の文末に「る。う。」（〜ている。〜と考える。〜と思う。）を足した。「」の中（相手の言葉）は見ない。案件D の「はじめに」の1文は KNOWN |
-| 540 | tougou-report | R |  |  | 現場の生の言葉は載せない（頻度・ | list／参照：原本 #198 |
-| 541 | tougou-report | R |  |  | 専門用語を避ける。「何が起きて・ | list／参照：原本 #461 |
-| 542 | tougou-report | M | 未 |  | 色・字体・余白は 対外資料/_ブ | list／候補：ブランド定義に空欄があれば build.sh が止まる。★STATUS §5 は字体が未定のまま、PDF は作られている → 台帳 §8 |
-| 543 | tougou-report | H |  |  | PDF化は 対外資料/_repo | list |
-| 544 | tougou-report | M | 済 | `test_build_sh.py::test_ng_stops_before_pdf` `test_build_sh.py::test_internal_word_outside_memo_stops` | check_report.py | text／NG なら pandoc まで行かず PDF も無い |
-| 545 | tougou-report | H |  |  | 見た目の反復は VS Code | list |
-| 546 | tougou-report | G |  |  | 本文の Markdown と体裁 | list |
-| 547 | tougou-report | H |  |  | デモは「実物と同じ作り」でなけれ | text／手で書いたかは残らない |
-| 548 | tougou-report | H |  |  | 1 ／ _TEST_ の架空案件 | table |
-| 549 | tougou-report | G |  |  | 2 ／ 見本にするときの差分は3 | table |
-| 550 | tougou-report | R |  |  | 3 ／ 節は1つも落とさない。( | table／参照：原本 #511 |
-| 551 | tougou-report | R |  |  | 4 ／ style.css を当 | table／参照：原本 #543 |
-| 552 | tougou-report | R |  |  | 案件/{会社名}/06_課題仮説 | table／参照：原本 #503 |
-| 553 | tougou-report | R |  |  | 案件/{会社名}/07_主任診断 | table／参照：原本 #492 |
-| 554 | tougou-report | N |  |  | これを 06 の内部メモに書いて | text |
-| 555 | tougou-report | M | 済 | `test_anken_outputs.py::test_b9_ng_when_07_has_fewer_items` | 05§8「人間の判断が必要な論点 | list／B9。件数だけ |
-| 556 | tougou-report | M | 済 | `test_anken_outputs.py::test_b22_ng_when_new_hypothesis_not_transferred` `test_anken_outputs.py::test_b24_ng_when_counter_hypothesis_blank` `test_anken_outputs.py::test_b24_ok_with_counter_hypothesis` | ③が「自分で新しく作った」と申告 | list／B22：05 §6 の件数 ≤ 07 §3 の転記数／B24：各行に対抗仮説 |
-| 557 | tougou-report | G |  |  | 06 で書くか書かないか④が迷っ | list |
-| 558 | tougou-report | G |  |  | 事実の食い違い（値の不一致）で、 | list |
-| 559 | tougou-report | G |  |  | 06 は顧客のもの、07 は診断 | text |
-| 560 | tougou-report | R |  |  | 棄却は載せない・要検証は仮説と明 | list／参照：原本 #459 |
-| 561 | tougou-report | R |  |  | 事実と仮説を分け、出典を残す。 | list／参照：原本 #460 |
-| 562 | tougou-report | R |  |  | 3つに絞る。経営者の言葉に翻訳。 | list／参照：原本 #462 |
-| 563 | tougou-report | R |  |  | 「一緒に確かめたい問い」を隠さな | list／参照：原本 #519 |
-| 564 | tougou-report | R |  |  | 急かさない・決めつけない・依存さ | list／参照：原本 #448 |
+| 408 | shinin-hansho | N |  |  | 格付けは項目ごとの強さで、項目ど | text |
+| 409 | shinin-hansho | G |  |  | 採用・要検証の項目の組ごとに、A | list |
+| 410 | shinin-hansho | G |  |  | 根っこの候補は、ほかの多くの項目 | list |
+| 411 | shinin-hansho | G |  |  | 根っこの候補ごとに、なぜ続いてい | list |
+| 412 | shinin-hansho | G |  |  | 根っこと症状がお金と時間にどう効 | list |
+| 413 | shinin-hansho | G |  |  | 候補が2つ以上なら全部並べる。ど | list |
+| 414 | shinin-hansho | G |  |  | 新しく作った矢印・候補は §6  | list |
+| 415 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b4_ng` | テンプレの §0「開封記録」を必 | text／形だけ |
+| 416a | shinin-hansho | M | 一部 | `test_anken_outputs.py::test_b4_ng` `test_anken_outputs.py::test_b34_ng_when_03_before_04` | §0 開封記録：04 を読んだ後 | list／【09-28 再点検】§0 の「04 を読んだ日時」と「03 を開封した日時」の前後を比べていない（B4 は空欄とテンプレの文言だけ）／【09-28 B34】§0 の2つの日時の前後を比べる（日付、両方に時刻があれば時刻まで。同じ日で時刻が片方だけは比べられないので通す）／【09-29 済 → 一部（本人決定 c）】同じ日で時刻が片方しか無いと「04 の後に 03」を確かめられないのに通す。記録の欠け＝05 の書き方の問題なので検査では埋めない。直しは移行後：05 §0 のテンプレで両方の時刻を必須に（③が読むファイル＝修正。台帳 §8）／【10-01 実走 #76】テンプレ §0 の2行に「時刻まで書く」と書いた（75-9 と一緒に）。TEST の③2回とも両方に時刻あり（#75 は3回中1回）。検査は本人決定 c のまま片方だけでも通すので「一部」のまま |
+| 416b | shinin-hansho | R |  |  | 04 が無い場合はその旨と、暫定判定であること | list／参照：原本 #370 |
+| 417 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` | §1 クロス表：03の仮説 ｜ | list／B16：節と §1 の列（03・04・結論・機序・解釈） |
+| 418 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b17_ng_when_counts_differ` `test_anken_outputs.py::test_b17_ng_when_summary_blank` `test_anken_outputs.py::test_b17_premise_table_is_not_counted_twice` `test_anken_outputs.py::test_b17_ng_when_a_judgement_row_is_missing` | §2 反証サマリー（採用 n／要 | list／B17：4つの判定が全部並び、§3 の最初の判定表と件数が合う |
+| 419 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` `test_anken_outputs.py::test_b16_premise_heading_by_stage_name` | §3 仮説ごとの判定表（＋前提が | list／B16：§3 と「前提が崩れた仮説」の専用表（### の名前は「前提が崩れた」か「Stage 2-0」） |
+| 420 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b5_ng_when_questions_are_a_list` | §4 現場で確認すべき決定的な問 | list／表の形だけ。優先度の順は人 |
+| 421 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b5_ng` `test_anken_outputs.py::test_b5_ng_when_no_destination_column` | → 各問いに「顧客可／社内のみ」 | text／B5 |
+| 422 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` | §5 AIに頼りすぎ注意：データ | list／B16：節があり空でない（「データでなくモデル依存」かどうかの中身は H） |
+| 423 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b6_ng_when_empty` `test_anken_outputs.py::test_b6_ng_when_section_missing` | §6 ③が新しく作った仮説の申告 | list／B6 |
+| 424 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b16_ng_when_section_missing` `test_anken_outputs.py::test_b16_rigor_ng` | §7 02b（主任診断士の見立て | list／B16：節があり空でない |
+| 425 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b11_ng_when_human_section_missing` | §8 人間の判断が必要な論点（下 | list／B11 |
+| 426 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b13_ng_when_empty` `test_anken_outputs.py::test_b13_ng_when_section_missing` `test_anken_outputs.py::test_b36_ng_when_sec9_says_none` | §9 比べていないもの（04§2 | list／B13／【09-28 再点検】#373b と同じ（04 §2 の比較不能 → §9 の引き継ぎ）／【09-28 B36】#373b と同じ |
+| 427 | shinin-hansho | G |  |  | §10 つながりと根っこの候補（ | list |
+| 428 | shinin-hansho | N |  |  | ③の格付けで「値の食い違い」か「 | text |
+| 429 | shinin-hansho | N |  |  | ③は通過点ではない。受け取って、 | text |
+| 430 | shinin-hansho | R |  |  | \| 比較不能（§9） \| 材料は | text／参照：原本 #379a |
+| 431 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b28_ng_rejected_to_customer` `test_anken_outputs.py::test_b28_ng_when_id_in_hypothesis_column` `test_anken_outputs.py::test_b28_ng_when_rejected_branch_cited` `test_anken_outputs.py::test_b28_split_parent_is_judgement` `test_anken_outputs.py::test_b28_mixed_sources_is_judgement` | 棄却した仮説から出た「決定的な問 | text／B28：§4 の出所の番号が全部 §3 で棄却の行にしか出ないのに顧客可、を止める。分割（H4a 要検証・H4b 棄却で出所が H4）と番号の混在は「なぜ聞くのか」の判断（H）＝機械では決まらない |
+| 432 | shinin-hansho | G |  |  | 顧客可 ／ 顧客に見せてよい。採 | table |
+| 433 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b7_ng_when_internal_question_copied_to_06` `test_anken_outputs.py::test_b22_ng_when_internal_question_not_transferred` | 社内のみ ／ 棄却した仮説から出 | table／06 に載っていないか（B7）＋ 07 §4 の転記数（B22） |
+| 434 | shinin-hansho | R |  |  | 答えが棄却済みの仮説になるなら、 | text／参照：原本 #431 |
+| 435 | shinin-hansho | G |  |  | 「訪問を前提にしない」＝訪問でき | text／F-1 と関わる |
+| 436 | shinin-hansho | N |  |  | 03 にも 04 にも書かれてい | text |
+| 437 | shinin-hansho | R |  |  | だが黙って混ぜてはいけない。 ④ | text／参照：原本 #438 |
+| 438 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b6_ng_when_empty` | 「これは①にも②にも無く、③が突 | list／節があり空でないかだけ（B6） |
+| 439 | shinin-hansho | G |  |  | 対抗仮説を必ず併記する | list |
+| 440 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b18_ng_when_self_approved` `test_anken_outputs.py::test_b18_ok_when_to_be_verified` | 格付けは原則 要検証。③が作った | list／B18：③が作った仮説を「採用」にしていない（「原則」なので要検証以外の判定は止めない） |
+| 441 | shinin-hansho | G |  |  | 「AIが決める領域ではない」と判 | text |
+| 442 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b9_ng_when_07_has_fewer_items` | 「これらは 07_主任診断士への | text／転記された結果（07 の件数）で見る（B9） |
+| 443 | shinin-hansho | G |  |  | 建設的に叩く。 目的は確度を上げ | list |
+| 444 | shinin-hansho | R |  |  | 一般論・業界パックを"証拠"にし | list／参照：原本 #395 |
+| 445a | shinin-hansho | R |  |  | 対抗仮説と反証条件を必ず付ける。 | list／参照：原本 #400 |
+| 445b | shinin-hansho | R |  |  | 反証条件 | list／参照：原本 #401 |
+| 446 | shinin-hansho | R |  |  | 判断しない。 採用/要検証/棄却 | list／参照：原本 #346 |
+| 447 | shinin-hansho | R |  |  | 04 を先に、03 を後に読む。 | list／参照：原本 #359 |
+| 448 | shinin-hansho | R |  |  | 自分が作った解釈は、自分で承認し | list／参照：原本 #440 |
+| 449 | shinin-hansho | R |  |  | 食い違いを消さない。 どちらが正 | list／参照：原本 #381 |
+| 450 | shinin-hansho | M | 済 | `test_anken_outputs.py::test_b26_ng_when_adopted_without_04` `test_anken_outputs.py::test_b26_not_applied_when_04_exists` `test_anken_outputs.py::test_b26_ok_without_adoption` | 04 が無いときは 採用 を出さ | list／B26：04 が無い案件の 05 §3 で採用 0（§2 との一致は B17）。実案件に 04 の無い 05 は無い＝合成でだけ確認 |
+| 451 | shinin-hansho | R |  |  | 守秘。 第二の意見で外部モデルを | list／参照：原本 #403 |
+| 452 | tougou-report | R |  |  | 経営者がハッとする言葉に翻訳し、 | text／参照：原本 #467 |
+| 453 | tougou-report | H |  |  | 「レポートにまとめて」「提出用に | text／使いどき |
+| 454 | tougou-report | R |  |  | これは貼り合わせではなく編集。棄 | text／参照：原本 #467 |
+| 455 | tougou-report | G |  |  | 編集であって貼り合わせではない。 | text |
+| 456 | tougou-report | G |  |  | 確度で取捨し、経営者の言葉に翻訳 | text／トーン |
+| 457 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_structural_leaks` | 採番（H1 X5 H3a・判定表 | list／採番の形（B-6） |
+| 458 | tougou-report | M | 済 | `test_check_report.py::test_draft_tolerates_comments_with_internal_words` `test_check_report.py::test_ng_on_structural_leaks` | 「どの判定をどこに束ねたか」の対 | list／本文に出れば採番・内部語で捕まる |
+| 459 | tougou-report | M | 済 | `test_build_sh.py::test_internal_memo_is_stripped_before_check` | 内部メモは build.sh が | list／build.sh を偽の pandoc の手前まで走らせて見る |
+| 460 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_internal_word` `test_check_report.py::test_ng_on_structural_leaks` | check_report.py | list |
+| 461 | tougou-report | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` `test_engine_consistency.py::test_a1_readers_match_cross_run_table` | 案件/{会社名}/01i_外形カ | list／有無だけ |
+| 462a | tougou-report | M | 済 | `test_check_anken.py::test_01i_falls_back_to_01_with_note` | 01i が無い案件（#14以前） | list／代用の NOTE |
+| 462b | tougou-report | M | 済 | `test_anken_outputs.py::test_b32_ng_when_substitute_not_recorded` `test_anken_outputs.py::test_b32_ok_when_recorded` `test_anken_outputs.py::test_b32_not_applied_when_01i_exists` | 07（社内申し送り）に残リスク | list／B32：01 はあり 01i が無い案件の 07 に「01i」と「代用／無い／なし」が同じ行にある。_TEST_案件C は規則（09-20）より前の 07（08-19）＝KNOWN |
+| 463 | tougou-report | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` `test_engine_consistency.py::test_a1_readers_match_cross_run_table` | 案件/{会社名}/05_反証レポ | list／有無だけ。尊重したかは人 |
+| 464 | tougou-report | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` `test_engine_consistency.py::test_a1_readers_match_cross_run_table` | 案件/{会社名}/04_現場分析 | list／有無だけ |
+| 465 | tougou-report | H |  |  | 案件/{会社名}/02_現場で確 | list／★④の入力に 02 とあるが、READERS と cross-run #101 の ④ に 02 が無い → 台帳 §8 |
+| 466 | tougou-report | R |  |  | 03_仮説_封.md を直接読ま | text／参照：原本 #106 |
+| 467 | tougou-report | G |  |  | 反証の格付けを尊重する：棄却は載 | list／棄却の語の検査は cross-run #121 |
+| 468 | tougou-report | G |  |  | 事実と仮説を分ける：出典・現場の | list |
+| 469 | tougou-report | G |  |  | 経営者の言葉に翻訳：専門用語を避 | list |
+| 470 | tougou-report | M | 済 | `test_anken_outputs.py::test_b20_ng_when_four_issues` `test_anken_outputs.py::test_b20_ok_with_three` | 主要課題は3つの"見出し"に絞る | list／B20：課題の節の ### が3つ以下 |
+| 471 | tougou-report | G |  |  | ただし「採用」を3件に間引かない | text |
+| 472 | tougou-report | G |  |  | 束ねる軸は「機序」（なぜそうなっ | text |
+| 473 | tougou-report | M | 済 | `test_anken_outputs.py::test_b33_ng_when_bundling_not_left_to_human` `test_anken_outputs.py::test_b33_ok_when_left_to_human` `test_anken_outputs.py::test_b33_not_applied_up_to_three` `test_anken_outputs.py::test_b33_line_outside_sec6_is_not_enough` | 本人が決める前：④は束ねて出して | list／B33：05 §3 の採用が3件を超えた案件の 07 §6 に「束ね」と「本人」が同じ行にある（本人が決めた後の記録も同じ形）。「決める前か後か」は機械では分からないので区別しない。_TEST_案件C は規則（09-25）より前＝KNOWN |
+| 474 | tougou-report | G |  |  | 本人が決めた後に④をやり直すとき | list／07 の記録と見出しの一致は意味を読む |
+| 475 | tougou-report | N |  |  | 問いにも棄却が混ざる： | list／前置き |
+| 476 | tougou-report | M | 済 | `test_anken_outputs.py::test_b7_ng_when_internal_question_copied_to_06` | 05§4「現場で確認すべき決定的 | text／B7。文言が一致したときだけ（CHECK #85） |
+| 477 | tougou-report | G |  |  | 「社内のみ」の存在は書く。件数と | list |
+| 478 | tougou-report | N |  |  | 何も書かない ／ 06 が全件掲 | table |
+| 479 | tougou-report | N |  |  | 件数を書く（「6件伏せた」） ／ | table |
+| 480 | tougou-report | H |  |  | 前提：その1文が事実であること。 | text／07§4 で確かめたかは痕跡が残らない |
+| 481 | tougou-report | M | 済 | `test_anken_outputs.py::test_b21_ng_when_two_issues_without_table` `test_anken_outputs.py::test_b21_ok_with_table_and_single_issue_needs_none` `test_anken_outputs.py::test_b21_ng_when_table_after_first_heading` | 課題を同じ重さに見せない（→ C | list／B21：課題が2つ以上なら表があり、最初の課題の見出しより前にある |
+| 482 | tougou-report | M | 済 | `test_anken_outputs.py::test_b21_ng_when_two_issues_without_table` | 列は ①御社の発信とお話が異なっ | text／B21：3列の見出し（異なっていた／数字／決めていない） |
+| 483 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_internal_word` `test_anken_outputs.py::test_b41_ng` | 格付け（強・中・弱）は書かない。 | text／「格付け」の語だけ。強・中・弱を書いたかは見ていない／【09-28 B41】06 に「強度」「格付け」の語・強／中／弱だけのセルが無いか。「強い根拠」のような地の文の格付けは人 |
+| 484 | tougou-report | G |  |  | 「根拠だけ棄却」型は、載せないだ | list |
+| 485 | tougou-report | G |  |  | ③が「自分で新しく作った」と申告 | list |
+| 486 | tougou-report | G |  |  | 理由：見出しにすると、誰も決めて | text |
+| 487 | tougou-report | M | 済 | `test_anken_outputs.py::test_b14_ng_when_limits_empty` `test_anken_outputs.py::test_b14_ng_when_limits_only_in_comment` `test_anken_outputs.py::test_b37_ng_on_ijou_nashi` `test_anken_outputs.py::test_b37_ng_on_polite_forms` | 比較不能を「異常なし」と書かない | list／B14（CHECK #83）。書き方は人／【09-28 再点検】06 に「異常なし」の語があるかは見ていない（B14 は限界の節の空欄だけ）／【09-28 B37】06 本文（内部メモを除く）に「異常なし」が無いか／【09-29】敬体の形（異常はありません・見られません・ございません・異常がない）も見る。「異常がないか」（問い）は通す。言い換え（問題ありません等）は人 |
+| 488 | tougou-report | H |  |  | 出所は 05§9「比べていないも | text／04§2 を見ないかは痕跡が残らない |
+| 489 | tougou-report | G |  |  | 9-1（材料が足りない）：「両側 | list |
+| 490 | tougou-report | G |  |  | 9-2（層が違う）：06 の本文 | list |
+| 491 | tougou-report | G |  |  | 資格の独占業務に踏み込まない：法 | list |
+| 492 | tougou-report | G |  |  | 「〜すべき」と断定しない。「〜を | text／法務・税務などの文脈か読まないと分からない |
+| 493 | tougou-report | N |  |  | 社労士法27条・行政書士法1条の | text |
+| 494 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | → 06 に「本レポートで踏み込 | text／必須節（CHECK #86） |
+| 495 | tougou-report | G |  |  | 法令・補助金・許認可の適正性に触 | list |
+| 496 | tougou-report | G |  |  | 第三者認証（ISO等）の「有効性 | list |
+| 497 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` `test_anken_outputs.py::test_b19_ng_when_sources_empty` | 出典を残す：AIの作文でないこと | list／B19：節があり空でない（内部メモだけは空とみなす） |
+| 498 | tougou-report | R |  |  | 守秘：現場メモの生の文言はそのま | list／参照：原本 #198 |
+| 499 | tougou-report | N |  |  | 06_課題仮説レポート.md ／ | table／案内 |
+| 500 | tougou-report | M | 済 | `test_anken_outputs.py::test_b9_ng_when_07_missing` | 07_主任診断士への申し送り.m | table／B9。06 があれば 07 もある（CHECK #87） |
+| 501 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` `test_anken_outputs.py::test_b19_ng_when_summary_over_three_lines` `test_anken_outputs.py::test_b19_three_lines_ok` | エグゼクティブサマリー（3行：根 | list／B19：節があり、本文が1〜3行（「本質的な病巣を突く」かは H） |
+| 502 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` | 御社の現状（外から見えること）（ | list／B19 |
+| 503 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` `test_anken_outputs.py::test_b23_ok_with_four_items` `test_anken_outputs.py::test_b23_ng_when_item_missing` `test_anken_outputs.py::test_b20_ng_when_four_issues` | 見えてきた本質的な課題：課題1＝ | list／B19・B20・B23：課題の節があり、見出しが3つ以下、各課題に4項目（何が起きているか／なぜか／根拠／放置すると）。「確度順」は 05 の判定との意味の対応が要るので H |
+| 504 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | 一緒に確かめたい問い（05§4 | list／必須節 |
+| 505 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | この診断の限界：伺えた範囲（ | list／必須節 |
+| 506 | tougou-report | R |  |  | 限界を先に言う相手の方が、言わな | text／参照：原本 #505 |
+| 507 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | 本レポートで踏み込んでいない領域 | list／必須節 |
+| 508 | tougou-report | G |  |  | 相手が規制業種なら業界規制名を一 | text／規制業種かは人の判断 |
+| 509 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` | 次の一歩（すり合わせへの案内。押 | list／必須節 |
+| 510 | tougou-report | R |  |  | 出典 | list／参照：原本 #497 |
+| 511 | tougou-report | M | 済 | `test_check_report.py::test_submission_ng_when_comment_left` | 内部メモ（どの格付けをどう反映し | list／提出版にコメントが残れば NG |
+| 512 | tougou-report | G |  |  | 中身は1件も落とさない。書き方だ | text |
+| 513 | tougou-report | G |  |  | 観察あり（どこで に 現地 があ | table／観察ありは通常の型。B8 は観察ゼロだけ見る |
+| 514 | tougou-report | M | 済 | `test_anken_outputs.py::test_b8_ng_on_observation_zero` `test_anken_outputs.py::test_b8_applies_to_template_format_memo` `test_anken_outputs.py::test_b8_ng_on_missing_stock_phrases` | 観察ゼロ（遠隔・伝聞・書面のみ） | table／文書名・見出し・「課題である」だけ（CHECK #77）／【09-28 B8 拡張】課題の節の冒頭2行に「断定ではなく」・「拝見していない／見て確かめたもの」・訪問に触れるなら「機会をいただける」。問いの並べ順（書面で確かめられるものを先に）は人 |
+| 515 | tougou-report | M | 済 | `test_anken_outputs.py::test_b8_ng_on_observation_zero` `test_anken_outputs.py::test_b8_negated_kadai_is_allowed` | 観察ゼロなら「これが課題である」 | list／「課題である」の語だけ |
+| 516 | tougou-report | M | 済 | `test_anken_outputs.py::test_b19_ng_when_section_missing` | 全項目が単一ソースでも 06 は | list／B19：課題の節に本文がある。「単一ソースであることを本文に書く」は言い回しが自由で形にならない（H） |
+| 517 | tougou-report | N |  |  | なぜ (b)「観察が入るまで出さ | list |
+| 518 | tougou-report | H |  |  | 型を変えたら、紐づく記述を全部見 | list |
+| 519 | tougou-report | M | 済 | `test_check_report.py::test_ng_when_required_section_missing` `test_engine_consistency.py::test_a4_required_sections_exist_in_report_template` `test_anken_outputs.py::test_b25_ng_when_template_section_missing` `test_anken_outputs.py::test_b25_template_heads_are_read_from_template` | 理由：古い 06 を土台にすると | text／B25：テンプレの「## 」見出しを毎回読み、06 が全部持つか（課題の節は観察の有無で2通り）。_TEST_案件C で実際に1節の欠落を捕まえた |
+| 520 | tougou-report | R |  |  | 本レポートで踏み込んでいない領域 | table／参照：原本 #494 |
+| 521 | tougou-report | R |  |  | この診断の限界 ／ 「AIに頼り | table／参照：原本 #505 |
+| 522 | tougou-report | G |  |  | 長さの上限（2026-11-27 | list |
+| 523 | tougou-report | N |  |  | 理由：架空案件の通しで 06 が | list |
+| 524 | tougou-report | N |  |  | 超えるときも削らずに 07 へ移 | list |
+| 525 | tougou-report | G |  |  | 長さを理由に削ってよいのは「重複 | list |
+| 526 | tougou-report | N |  |  | 理由：長さで削ると真っ先に落ちる | list |
+| 527 | tougou-report | N |  |  | 重複の例：「この診断の限界」と課 | list／例 |
+| 528 | tougou-report | R |  |  | 課題の見出しは最大3つ（束ねる。 | list／参照：原本 #470 |
+| 529 | tougou-report | M | 済 | `test_anken_outputs.py::test_b40_ng_when_customer_question_dropped` | 「一緒に確かめたい問い」は 06 | list／候補：05 §4 の顧客可の問いが 06 にある（④が言い換えるので文言一致では下限）／【09-28 B40】05 §4 の顧客可の件数 ≤ 06「一緒に確かめたい問い」の件数（④は言い換えるので文言は照合しない＝件数の下限） |
+| 530 | tougou-report | G |  |  | 「この診断の限界」の 9-2（数 | list |
+| 531 | tougou-report | G |  |  | 営業に効くからという理由で、診断 | text |
+| 532 | tougou-report | N |  |  | 理由：06 は診断の成果物であっ | text |
+| 533 | tougou-report | R |  |  | 重複（同じ説明が2か所にある）・ | table／参照：原本 #525 |
+| 534 | tougou-report | R |  |  |  ／ 印象が悪い／煽りに読まれる | table／参照：原本 #531 |
+| 535 | tougou-report | R |  |  |  ／ 相手が読みたがらなさそう | table／参照：原本 #531 |
+| 536 | tougou-report | G |  |  | 削ったら、紙に「削った」と書く。 | text |
+| 537 | tougou-report | G |  |  | 見本（デモ）は抜粋してよい。ただ | text |
+| 538 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_sincerity_word` | 1 ／ 誠実さを宣言する ／ 「 | table／語の一覧だけ |
+| 539 | tougou-report | G |  |  | 2 ／ 3つの課題を同じ形で書く | table |
+| 540 | tougou-report | G |  |  | 3 ／ 人がいない紙にする ／ | table |
+| 541 | tougou-report | R |  |  | 4 ／ 太字を撒く ／ 全部が強 | table／参照：原本 #545 |
+| 542a | tougou-report | M | 済 | `test_anken_outputs.py::test_b25_ng_when_template_section_missing` `test_anken_outputs.py::test_b25_ng_when_hajimeni_not_first` | → 冒頭に「はじめに」を置き、主 | text／B25：テンプレの「はじめに」の節があり、最初の ## 節。空欄のまま出すかは CHECK #96（波括弧） |
+| 542b | tougou-report | H |  |  | 主任診断士本人が一人称で書く | text／誰が書いたかは残らない（09-28：テンプレに欄を足した → 台帳 §8） |
+| 543 | tougou-report | H |  |  | 空欄に戻したり、言い回しを整えた | text／前の 06 と比べれば機械でも見られるが、前の版を残さない運用 |
+| 544 | tougou-report | N |  |  | 太字の決まり（check_rep | text／前置き |
+| 545 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_two_inline_bolds_in_one_section` `test_check_report.py::test_one_inline_bold_per_section_ok` | 文中の太字は 1節に1か所まで。 | list |
+| 546 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_long_bold` `test_check_report.py::test_bold_sentence_on_own_line_is_counted` | 太字は 20字まで。文ごと太くし | list |
+| 547 | tougou-report | M | 済 | `test_check_report.py::test_label_only_bold_lines_not_counted` `test_check_report.py::test_label_followed_by_colon_inline_not_counted` | 項目名（「何が起きているか：」の | list |
+| 548 | tougou-report | G |  |  | 迷ったら太字にしない。強調が1つ | list |
+| 549 | tougou-report | N |  |  | ※このスキルやテンプレの指示文は | list |
+| 550 | tougou-report | M | 済 | `test_check_report.py::test_ng_on_each_assertive_word` `test_anken_outputs.py::test_b42_ng` | 敬体。相手は「御社」。断定しない | list／断定語の一覧だけ。敬体・「可能性」の連続は見ていない／【09-28 B42】常体の文末（である。だ。など）が無い・「可能性」が3文続かない・表の外で「貴社」と呼ばない（表・見出し・引用・内部メモは見ない）。「1ページ」は連続3文で近似。言い切れる事実を言い切ったかは人／【09-29】常体の文末に「る。う。」（〜ている。〜と考える。〜と思う。）を足した。「」の中（相手の言葉）は見ない。案件D の「はじめに」の1文は KNOWN |
+| 551 | tougou-report | R |  |  | 現場の生の言葉は載せない（頻度・ | list／参照：原本 #198 |
+| 552 | tougou-report | R |  |  | 専門用語を避ける。「何が起きて・ | list／参照：原本 #469 |
+| 553 | tougou-report | M | 未 |  | 色・字体・余白は 対外資料/_ブ | list／候補：ブランド定義に空欄があれば build.sh が止まる。★STATUS §5 は字体が未定のまま、PDF は作られている → 台帳 §8 |
+| 554 | tougou-report | H |  |  | PDF化は 対外資料/_repo | list |
+| 555 | tougou-report | M | 済 | `test_build_sh.py::test_ng_stops_before_pdf` `test_build_sh.py::test_internal_word_outside_memo_stops` | check_report.py | text／NG なら pandoc まで行かず PDF も無い |
+| 556 | tougou-report | H |  |  | 見た目の反復は VS Code | list |
+| 557 | tougou-report | G |  |  | 本文の Markdown と体裁 | list |
+| 558 | tougou-report | H |  |  | デモは「実物と同じ作り」でなけれ | text／手で書いたかは残らない |
+| 559 | tougou-report | H |  |  | 1 ／ _TEST_ の架空案件 | table |
+| 560 | tougou-report | G |  |  | 2 ／ 見本にするときの差分は3 | table |
+| 561 | tougou-report | R |  |  | 3 ／ 節は1つも落とさない。( | table／参照：原本 #519 |
+| 562 | tougou-report | R |  |  | 4 ／ style.css を当 | table／参照：原本 #554 |
+| 563 | tougou-report | R |  |  | 案件/{会社名}/06_課題仮説 | table／参照：原本 #511 |
+| 564 | tougou-report | R |  |  | 案件/{会社名}/07_主任診断 | table／参照：原本 #500 |
+| 565 | tougou-report | N |  |  | これを 06 の内部メモに書いて | text |
+| 566 | tougou-report | M | 済 | `test_anken_outputs.py::test_b9_ng_when_07_has_fewer_items` | 05§8「人間の判断が必要な論点 | list／B9。件数だけ |
+| 567 | tougou-report | M | 済 | `test_anken_outputs.py::test_b22_ng_when_new_hypothesis_not_transferred` `test_anken_outputs.py::test_b24_ng_when_counter_hypothesis_blank` `test_anken_outputs.py::test_b24_ok_with_counter_hypothesis` | ③が「自分で新しく作った」と申告 | list／B22：05 §6 の件数 ≤ 07 §3 の転記数／B24：各行に対抗仮説 |
+| 568 | tougou-report | G |  |  | 06 で書くか書かないか④が迷っ | list |
+| 569 | tougou-report | G |  |  | 事実の食い違い（値の不一致）で、 | list |
+| 570 | tougou-report | G |  |  | 06 は顧客のもの、07 は診断 | text |
+| 571 | tougou-report | R |  |  | 棄却は載せない・要検証は仮説と明 | list／参照：原本 #467 |
+| 572 | tougou-report | R |  |  | 事実と仮説を分け、出典を残す。 | list／参照：原本 #468 |
+| 573 | tougou-report | R |  |  | 3つに絞る。経営者の言葉に翻訳。 | list／参照：原本 #470 |
+| 574 | tougou-report | R |  |  | 「一緒に確かめたい問い」を隠さな | list／参照：原本 #529 |
+| 575 | tougou-report | R |  |  | 急かさない・決めつけない・依存さ | list／参照：原本 #456 |

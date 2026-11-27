@@ -350,7 +350,7 @@ def b8_observation_zero(memo_src, src06):
             out.append(_v(F06, i, "B8 観察ゼロなのに見出しが「見えてきた本質的な課題」"))
         if re.search(r"課題である(?![とか])", l):   # 「課題であると断定する段階ではない」は出力仕様(0)に沿った書き方
             out.append(_v(F06, i, "B8 観察ゼロなのに「課題である」と書いている"))
-    # 09-28：出力仕様(0)の決まり文句（tougou-report #500・CHECK #77）。言い回しの細部と問いの並べ順は人が見る
+    # 09-28：出力仕様(0)の決まり文句（tougou-report #508・CHECK #77）。言い回しの細部と問いの並べ順は人が見る
     sec = _issue_section(body)
     if sec and not any("断定ではなく" in l for _, l in _text_lines(sec)[:2]):
         out.append(_v(F06, sec[0][0], "B8 観察ゼロなのに課題の節の冒頭に「断定ではなく…という段階」が無い"))
@@ -550,7 +550,7 @@ def b17_05_summary_matches(src):
 
 
 def b18_05_no_self_approval(src):
-    """B18：§6「③が新しく作った仮説」を③が「採用」にしていない（shinin-hansho #426：自分の推論を自分で承認しない）。"""
+    """B18：§6「③が新しく作った仮説」を③が「採用」にしていない（shinin-hansho #434：自分の推論を自分で承認しない）。"""
     out = []
     for t in tables(section_named(src, "新しく作った仮説") or []):
         ji, ii = _col_exact(t, "判定"), col(t, "解釈")
@@ -567,7 +567,7 @@ def _issue_section(src06):
 
 
 def b19_06_sections(src06):
-    """B19：06 にエグゼクティブサマリー・御社の現状・課題の節・出典があり、空でない（tougou-report #483・#487〜#489・#502）。
+    """B19：06 にエグゼクティブサマリー・御社の現状・課題の節・出典があり、空でない（tougou-report #491・#487〜#489・#502）。
     課題の節の名前は観察の有無で変わる（出力仕様(0)）。"""
     body = _blank_comments(src06)
     out = []
@@ -592,7 +592,7 @@ def _issue_heads(sec):
 
 
 def b20_06_at_most_three(src06):
-    """B20：課題の見出し（課題の節の ###）が3つ以下（tougou-report #456）。"""
+    """B20：課題の見出し（課題の節の ###）が3つ以下（tougou-report #464）。"""
     heads = _issue_heads(_issue_section(_blank_comments(src06)))
     if len(heads) > 3:
         return [_v(F06, heads[3][0], f"B20 課題の見出しが {len(heads)} 個（3つまで。超えたら束ねる）")]
@@ -600,7 +600,7 @@ def b20_06_at_most_three(src06):
 
 
 def b21_06_evidence_table(src06):
-    """B21：課題が2つ以上なら、課題の節に根拠の種類の表（列：異なっていた点／数字／まだ決めていないこと）がある（tougou-report #467・#468）。"""
+    """B21：課題が2つ以上なら、課題の節に根拠の種類の表（列：異なっていた点／数字／まだ決めていないこと）がある（tougou-report #475・#468）。"""
     sec = _issue_section(_blank_comments(src06))
     if len(_issue_heads(sec)) < 2:
         return []
@@ -628,7 +628,7 @@ def _count_07_sec(src07, num):
 
 def b22_07_transfers(anken, src05):
     """B22：05 §6 の新仮説の件数 ≤ 07 §3 の転記数、05 §4 の「社内のみ」の件数 ≤ 07 §4 の転記数
-    （tougou-report #550・shinin-hansho #419。B9 と同じ形）。"""
+    （tougou-report #561・shinin-hansho #426。B9 と同じ形）。"""
     p07 = os.path.join(anken, F07)
     if src05 is None or not os.path.exists(p07):
         return []   # 07 が無いことは B9
@@ -645,7 +645,7 @@ ISSUE_ITEMS = ("何が起きているか", "なぜか", "根拠", "放置する�
 
 
 def b23_06_issue_items(src06):
-    """B23：各課題（課題の節の ###）に4項目「何が起きているか／なぜか（仮説）／根拠／放置するとどうなるか」がある（tougou-report #489）。"""
+    """B23：各課題（課題の節の ###）に4項目「何が起きているか／なぜか（仮説）／根拠／放置するとどうなるか」がある（tougou-report #497）。"""
     sec = _issue_section(_blank_comments(src06)) or []
     heads = _issue_heads(sec)
     out = []
@@ -659,7 +659,7 @@ def b23_06_issue_items(src06):
 
 
 def b24_07_counter_hypothesis(anken):
-    """B24：07 §3（③が新しく作った仮説）の各行に対抗仮説がある（tougou-report #550「その対抗仮説」）。"""
+    """B24：07 §3（③が新しく作った仮説）の各行に対抗仮説がある（tougou-report #561「その対抗仮説」）。"""
     p07 = os.path.join(anken, F07)
     if not os.path.exists(p07):
         return []
@@ -685,7 +685,7 @@ def template_heads_06():
 
 
 def b25_06_matches_template(src06):
-    """B25：06 がテンプレの「## 」見出しを全部持つ（tougou-report #505「必ずテンプレと節を照合する」）。
+    """B25：06 がテンプレの「## 」見出しを全部持つ（tougou-report #513「必ずテンプレと節を照合する」）。
     テンプレの見出しを毎回読むので、テンプレに節が足されたら古い 06 はここで落ちる。"""
     heads = [l for l in _blank_comments(src06).splitlines() if l.startswith("## ")]
     out = []
@@ -693,13 +693,13 @@ def b25_06_matches_template(src06):
         keys = ISSUE_ALIASES if key in ISSUE_ALIASES else (key,)
         if not any(k in h for h in heads for k in keys):
             out.append(_v(F06, 1, f"B25 テンプレの節「{key}」が無い"))
-    # 「はじめに」は冒頭（最初の ## 節）に置く（tougou-report #525a）
+    # 「はじめに」は冒頭（最初の ## 節）に置く（tougou-report #536a）
     if heads and any("はじめに" in h for h in heads) and "はじめに" not in heads[0]:
         out.append(_v(F06, 1, "B25 「はじめに」が冒頭（最初の ## 節）に無い"))
     return out
 
 
-# ── B26〜B28：05 の形（shinin-hansho #436・#379・#417。仕分け表_SKILL.md の M の未） ──
+# ── B26〜B28：05 の形（shinin-hansho #444・#379・#417。仕分け表_SKILL.md の M の未） ──
 
 
 def _says_no_04(src):
@@ -716,7 +716,7 @@ def _says_no_04(src):
 
 
 def b26_05_no_adopt_without_04(src):
-    """B26：04 が無い案件の 05。「採用」を出していない（shinin-hansho #436。§3 判定表で数える。§2 との一致は B17）、
+    """B26：04 が無い案件の 05。「採用」を出していない（shinin-hansho #444。§3 判定表で数える。§2 との一致は B17）、
     「現場側が無い状態での格付け」であることを明記している（#364）。"""
     out = []
     sec = section_named(src, "判定表")
@@ -773,7 +773,7 @@ def b29_05_cross_keeps_numbers(src):
     return out
 
 
-# ── B30〜B33：入力が無いときの扱い（genba-ops #174・#177／tougou-report #448b・#459） ──
+# ── B30〜B33：入力が無いときの扱い（genba-ops #174・#177／tougou-report #456b・#459） ──
 
 F01 = "01_外形カード_事実編.md"
 F01I = "01i_外形カード_内部用.md"
@@ -806,7 +806,7 @@ def b31_04_no_01(src04):
 
 
 def b32_07_01i_substitute(anken):
-    """B32：01i が無く 01 で代用した案件の 07 に、その残リスクが書いてある（tougou-report #448b）。
+    """B32：01i が無く 01 で代用した案件の 07 に、その残リスクが書いてある（tougou-report #456b）。
     「01i」と「代用／無い／ない／なし」が同じ行にあるか（内部メモは数えない）。"""
     p = os.path.join(anken, F07)
     if not os.path.exists(p):
@@ -817,7 +817,7 @@ def b32_07_01i_substitute(anken):
 
 
 def b33_07_bundling_left_to_human(anken, src05):
-    """B33：採用が3件を超えた（④が束ねる）案件の 07 §6 に「束ね方は本人が決める」（tougou-report #459）。
+    """B33：採用が3件を超えた（④が束ねる）案件の 07 §6 に「束ね方は本人が決める」（tougou-report #467）。
     「束ね」と「本人」が §6 の同じ行にあるか（本人が決めた後の記録もこの形になる）。"""
     p = os.path.join(anken, F07)
     if not os.path.exists(p) or _judgements(src05)["採用"] <= 3:
@@ -844,7 +844,7 @@ def _hyp_ids(v, parent=False):
 
 
 def b28_05_rejected_question_internal(src):
-    """B28：棄却した仮説から出た §4 の問いの行き先が「社内のみ」（shinin-hansho #417）。
+    """B28：棄却した仮説から出た §4 の問いの行き先が「社内のみ」（shinin-hansho #424）。
     機械で決まる場合だけを見る：§4 の出所の番号が全部、§3 で棄却の行にしか出てこないのに「顧客可」。
     分割（H4a 要検証・H4b 棄却）で出所が H4 のとき・採用と棄却の番号が混ざるときは判断（H）なので見ない。"""
     verdicts = {}
@@ -987,7 +987,7 @@ IJOU_NASHI = re.compile(r"異常(?:は|が)?(?:なし|無し|ない|ありませ
 
 
 def b37_06_no_ijou_nashi(src06):
-    """B37：06 本文に「異常なし」と書いていない（tougou-report #473。内部メモは除く）。
+    """B37：06 本文に「異常なし」と書いていない（tougou-report #481。内部メモは除く）。
     06 は敬体なので「異常はありません」などの形も見る。「異常がないか」（問い）は通す（09-29）。"""
     return [_v(F06, i + 1, "B37 06 に「異常なし」と書いている")
             for i, l in enumerate(_blank_comments(src06).splitlines()) if IJOU_NASHI.search(l.replace("*", ""))]
@@ -1007,16 +1007,23 @@ def _count_06_questions(src06):
     return items + sum(len(rows(t)) for t in tables(sec))
 
 
+Q_MAX = 7   # 06 に載せる問いの上限（2026-11-27 本人決定。8つ目以降は 07§4 へ移す）
+
+
 def b40_06_all_customer_questions(src05, src06):
-    """B40：05 §4 の「顧客可」の問いの数 ≤ 06「一緒に確かめたい問い」の数（tougou-report #513：全件載せる）。
-    ④は言い換えるので文言では照合しない。件数の下限だけ。"""
+    """B40：06「一緒に確かめたい問い」は、05 §4 の「顧客可」の数か 7 の小さい方以上、7 以下（tougou-report 出力仕様(2)）。
+    ④は言い換えるので文言では照合しない。件数だけ。"""
     k = sum(1 for _, _, d in (_sec4_rows(src05) or []) if "顧客可" in d and "社内のみ" not in d)
     n = _count_06_questions(src06)
-    return [_v(F06, "-", f"B40 05 §4 の顧客可 {k} 件に対し 06 の問いが {n} 件")] if n < k else []
+    if n < min(k, Q_MAX):
+        return [_v(F06, "-", f"B40 05 §4 の顧客可 {k} 件に対し 06 の問いが {n} 件（{min(k, Q_MAX)} 件は要る）")]
+    if n > Q_MAX:
+        return [_v(F06, "-", f"B40 06 の問いが {n} 件（{Q_MAX} 件まで。残りは 07§4 へ）")]
+    return []
 
 
 def b41_06_no_grading(src06):
-    """B41：06 に格付け（強・中・弱）を書いていない（tougou-report #469）。表のセルが強／中／弱だけのもの、「強度」「格付け」の語。"""
+    """B41：06 に格付け（強・中・弱）を書いていない（tougou-report #477）。表のセルが強／中／弱だけのもの、「強度」「格付け」の語。"""
     body = _blank_comments(src06)
     out = [_v(F06, i + 1, "B41 06 に「強度」「格付け」と書いている")
            for i, l in enumerate(body.splitlines()) if re.search(r"強度|格付け", l)]
@@ -1033,7 +1040,7 @@ QUOTE = re.compile(r"「[^」]*」")   # 「」の中は相手の言葉。文末
 
 
 def b42_06_polite_style(src06):
-    """B42：06 は敬体・相手は「御社」・「可能性」を3文以上続けない（tougou-report #533）。
+    """B42：06 は敬体・相手は「御社」・「可能性」を3文以上続けない（tougou-report #544）。
     表・見出し・引用・内部メモは見ない。断定語は check_report（ASSERTIVE）、言い切れる事実を言い切ったかは人。"""
     body = "\n".join(l for l in _blank_comments(src06).splitlines() if not l.lstrip().startswith(("|", "#", ">")))
     sents = [x.strip().replace("*", "") for x in re.split(r"(?<=。)", QUOTE.sub("「」", body)) if x.strip()]
