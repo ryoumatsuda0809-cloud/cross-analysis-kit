@@ -67,9 +67,9 @@
 | 51 | cross-run | R |  |  | （実際に起きた。deny を一時 | text／参照：原本 #112 |
 | 52 | cross-run | N |  |  | 封（.claude/settin | text |
 | 53 | cross-run | N |  |  | 別のフォルダで開くと、何の警告も | text |
-| 54 | cross-run | H |  |  | 案件/_封の確認/03_仮説_封 | list |
-| 55 | cross-run | H |  |  | 拒否されれば封は効いている。 確 | list |
-| 56 | cross-run | H |  |  | 読めてしまったら、どの段も起動し | list |
+| 54 | cross-run | H |  |  | 確認用のファイルは作らない。 存在 | list |
+| 55 | cross-run | H |  |  | 「denied by your | list |
+| 56 | cross-run | H |  |  | 「存在しない（does not exi | list |
 | 57 | cross-run | H |  |  | 案件フォルダの中身を ls して | text／どこから始めるかの判断。足りないものは #53〜#57 の WARN |
 | 58 | cross-run | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` | 何も無い ／ Stage 1（① | table／どの段がまだ回せないかを WARN で出す。次に何をするかは人 |
 | 59 | cross-run | M | 済 | `test_check_anken.py::test_missing_reader_file_is_warn` | 01〜03 あり、現場メモ無し | table／現場メモが無ければ ② の WARN。止まったかは人 |
